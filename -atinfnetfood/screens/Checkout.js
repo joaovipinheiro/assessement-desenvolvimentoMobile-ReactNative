@@ -31,21 +31,18 @@ const Checkout = ({ route, navigation }) => {
       return;
     }
 
-    // Animação do botão
     Animated.sequence([
       Animated.timing(buttonAnim, { toValue: 0.9, duration: 100, useNativeDriver: true }),
       Animated.timing(buttonAnim, { toValue: 1, duration: 100, useNativeDriver: true }),
     ]).start(async () => {
-      // Exibe a notificação
       await Notifications.scheduleNotificationAsync({
         content: {
           title: 'Pedido Confirmado ✅',
           body: `Seu pedido no valor de R$ ${calculateTotal()} foi finalizado com sucesso!`,
         },
-        trigger: null, // Notificação instantânea
+        trigger: null, 
       });
 
-      // Navega para a tela inicial
       navigation.navigate('Home');
     });
   };

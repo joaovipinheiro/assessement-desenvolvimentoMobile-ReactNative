@@ -11,8 +11,7 @@ const Login = ({ navigation }) => {
   const user = users.find(user => user.email === email && user.password === password);
   
   if (user) {
-    // Navegar para a tela DrawerNavigation
-    navigation.replace('DrawerNavigation'); // Usando 'replace' para substituir a tela de login
+    navigation.replace('DrawerNavigation'); 
   } else {
     Alert.alert('Login falhou', 'E-mail ou senha inválidos.');
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from '@expo/vector-icons';
-
 import Home from '../screens/Home';
 import Products from '../screens/Products';
 import Cart from '../screens/Cart';
@@ -10,6 +9,7 @@ import Order from '../screens/Order';
 import Restaurant from '../screens/Restaurant';
 import Checkout from '../screens/Checkout';
 import Settings from '../screens/Settings';
+import Map from '../screens/Map';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,31 +18,29 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={({ route }) => ({
         headerStyle: {
-          backgroundColor: '#6200ee', // Cor do cabeçalho
+          backgroundColor: '#6200ee',
         },
-        headerTintColor: '#fff', // Cor do texto no cabeçalho
+        headerTintColor: '#fff', 
         drawerStyle: {
-          backgroundColor: '#f3f3f3', // Cor de fundo do menu lateral
+          backgroundColor: '#f3f3f3', 
         },
-        drawerActiveTintColor: '#6200ee', // Cor do item ativo
-        drawerInactiveTintColor: '#333', // Cor do item inativo
+        drawerActiveTintColor: '#6200ee', 
+        drawerInactiveTintColor: '#333', 
         drawerLabelStyle: {
-          fontWeight: 'bold', // Deixa os rótulos dos itens em negrito
-          fontSize: 16, // Tamanho da fonte do label
+          fontWeight: 'bold', 
+          fontSize: 16, 
         },
         drawerIcon: ({ focused, color, size }) => {
           let iconName;
-
-          // Ícones baseados no nome da rota
           switch (route.name) {
             case 'Home':
               iconName = focused ? 'home' : 'home-outline';
               break;
-            case 'Products':
-              iconName = focused ? 'shirt' : 'shirt-outline';
-              break;
             case 'Profile':
               iconName = focused ? 'person' : 'person-outline';
+              break;
+            case 'Products':
+              iconName = focused ? 'cube' : 'cube-outline';
               break;
             case 'Order':
               iconName = focused ? 'clipboard' : 'clipboard-outline';
@@ -59,23 +57,27 @@ const DrawerNavigation = () => {
             case 'Settings':
               iconName = focused ? 'settings' : 'settings-outline';
               break;
+            case 'Map':
+              iconName = focused ? 'map' : 'map-outline';  
+              break;
             default:
-              iconName = 'help-circle-outline';
+              iconName = 'help-circle'; 
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
     >
-      {/* Telas no Drawer */}
+   
       <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Products" component={Products} />
+      <Drawer.Screen name="Products" component={Products} initialParams={{ cart: [1] }} />
       <Drawer.Screen name="Cart" component={Cart}  initialParams={{ cart: [] }}/>
       <Drawer.Screen name="Order" component={Order} />
       <Drawer.Screen name="Restaurant" component={Restaurant} />
       <Drawer.Screen name="Checkout" component={Checkout} initialParams={{ cart: [] }}/>
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="Map" component={Map} />
     </Drawer.Navigator>
   );
 };

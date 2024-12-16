@@ -3,18 +3,16 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native
 import { restaurantDetails } from '../data/MockData';
 
 const Restaurant = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // Índice atual do restaurante
+  const [currentIndex, setCurrentIndex] = useState(0); 
 
   const restaurant = restaurantDetails[currentIndex];
 
-  // Função para ir ao próximo restaurante
   const handleNext = () => {
     if (currentIndex < restaurantDetails.length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
 
-  // Função para ir ao restaurante anterior
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevIndex) => prevIndex - 1);
@@ -23,11 +21,9 @@ const Restaurant = () => {
 
   return (
     <View style={styles.container}>
-      {/* Nome e Endereço do Restaurante */}
       <Text style={styles.title}>{restaurant.name}</Text>
       <Text style={styles.address}>{restaurant.address}</Text>
 
-      {/* Lista de Menu */}
       <Text style={styles.sectionTitle}>Cardápio:</Text>
       <FlatList
         data={restaurant.menu}
@@ -40,7 +36,6 @@ const Restaurant = () => {
         )}
       />
 
-      {/* Botões de Navegação */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, currentIndex === 0 && styles.buttonDisabled]}

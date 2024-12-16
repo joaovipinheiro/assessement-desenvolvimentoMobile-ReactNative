@@ -13,6 +13,7 @@ const Map = () => {
   };
 
   const navigation = useNavigation();
+  
 
   // Função para lidar com o clique no restaurante
   const handleRestaurantClick = (restaurantId) => {
@@ -30,7 +31,6 @@ const Map = () => {
           longitudeDelta: 0.0421,
         }}
       >
-        {/* Marcadores para os restaurantes */}
         {restaurants.map((restaurant) => (
          <Marker
   key={restaurant.id}
@@ -40,9 +40,8 @@ const Map = () => {
   }}
   title={restaurant.name}
   description={`Localização do ${restaurant.name}`}
-  onPress={() => handleRestaurantClick(restaurant.id)} // Passa o ID do restaurante
+  onPress={() => handleRestaurantClick(restaurant.id)} restaurante
 />
-
         ))}
       </MapView>
     </View>

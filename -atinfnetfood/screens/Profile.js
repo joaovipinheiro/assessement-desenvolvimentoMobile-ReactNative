@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
-import { getUsers } from '../data/MockData'; // Suponho que getUsers seja uma função que retorna um usuário
+import { getUsers } from '../data/MockData'; 
 
 const Profile = ({ route, navigation }) => {
-  // Acessando os dados do usuário passados via parâmetros
-  const { user } = route.params || {};  // Garantir que route.params seja um objeto e user seja acessível
+  const { user } = route.params || {};  
 
-  // Se o usuário não for encontrado, busca um usuário fictício
-  const currentUser = user || getUsers()[0]; // Suponho que getUsers() retorna uma lista de usuários, e pegamos o primeiro
+  const currentUser = user || getUsers()[0]; 
 
   if (!currentUser) {
     return (
@@ -18,7 +16,7 @@ const Profile = ({ route, navigation }) => {
   }
 
   const handleLogout = () => {
-    // Redirecionar para a tela de login ao sair
+   
     navigation.replace('Login');
   };
 
@@ -27,7 +25,7 @@ const Profile = ({ route, navigation }) => {
       <Text style={styles.title}>Perfil</Text>
       <Image
         style={styles.avatar}
-        source={{ uri: currentUser.avatar || 'https://placekitten.com/120/120' }} // Avatar fictício ou do usuário
+        source={{ uri: currentUser.avatar || 'https://placekitten.com/120/120' }} 
       />
       <Text style={styles.info}>Nome: {currentUser.name}</Text>
       <Text style={styles.info}>E-mail: {currentUser.email}</Text>

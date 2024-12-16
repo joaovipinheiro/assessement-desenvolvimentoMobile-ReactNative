@@ -1,5 +1,4 @@
 export const getUsers = () => {
-  // Simulando dados de usuários registrados
   return [
     { email: '123', password: '123', name: 'User One' },
     { email: 'user2@example.com', password: 'password2', name: 'User Two' },

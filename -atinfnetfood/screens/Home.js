@@ -16,7 +16,6 @@ const Home = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  // Filtra as categorias com base na pesquisa
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -24,24 +23,22 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
-      {/* Barra de pesquisa separada */}
        <Text style={styles.h1}>Buscar Categoria </Text>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
     <Text style={styles.h1}>Categorias </Text>
 
-      {/* FlatList para categorias filtradas */}
       <FlatList
         data={filteredCategories}
         keyExtractor={(item) => item.id}
         renderItem={renderCategory}
         contentContainerStyle={styles.list}
-        horizontal={true} // Define o scroll horizontal
-        showsHorizontalScrollIndicator={false} // Remove a barra de rolagem
+        horizontal={true} 
+        showsHorizontalScrollIndicator={false} 
       />
 
       
-      <Button title="Ver Perfil" onPress={() => navigation.navigate('Profile')} />
+      <Button title="Ver Mapa" onPress={() => navigation.navigate('Mapa')} />
     </View>
   );
 };
@@ -62,9 +59,9 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   card: {
-    width: 150, // Aumente a largura para melhor visualização
-    height: 150, // Aumente a altura para o card ficar mais visível
-    marginRight: 15, // Espaço entre os cards
+    width: 150, 
+    height: 150,
+    marginRight: 15, 
     backgroundColor: '#f9f9f9',
     padding: 10,
     borderRadius: 10,
@@ -73,9 +70,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 80, // Aumente o tamanho da imagem
-    height: 80, // Aumente a altura da imagem
-    borderRadius: 10, // Imagem arredondada
+    width: 80, 
+    height: 80, 
+    borderRadius: 10, 
   },
   text: {
     fontSize: 16,
